@@ -1,0 +1,15 @@
+.table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    row-gap: 1.5rem;
+    text-align: center;
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin:20px 20px;
+}
