@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using CarSpeed.Core.Models;
+﻿using CarSpeed.Core.Models;
 using CarSpeed.Core.Services;
 using CarSpeed.Data;
 using CarSpeedAPI.Models;
