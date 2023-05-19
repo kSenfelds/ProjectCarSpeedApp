@@ -1,7 +1,5 @@
 import React from 'react';
 import { Car } from '../Types/Car';
-import { useState, useEffect } from 'react';
-import { FilterForm } from './FilterForm';
 import  '../Styles/table.scss';
 
 type CarListProps = {
@@ -39,8 +37,6 @@ export const CarList = ({cars, handleNextPage, handlePreviousPage}: CarListProps
         <button onClick={() => handlePreviousPage()}>Previous</button>
         <button onClick={() => handleNextPage()}>Next</button>
         </div>
-        
-
     </div>
   )
 }

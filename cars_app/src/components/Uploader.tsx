@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { Car } from '../Types/Car';
-import {  putCars } from '../api';
-import axios, { all } from "axios";
+import {  deleteCars, putCars } from '../api';
+import "../Styles/uploader.scss";
 
 export const allCars: Car[] = [];
 export const Uploader = () => {
@@ -36,10 +36,7 @@ export const Uploader = () => {
         setLoading(false);};
     };
     
-  };
-  
-
-    
+  };  
 
   return (
     <>
@@ -57,6 +54,12 @@ export const Uploader = () => {
           }>{loading? "Loading": "Save"}</button>
         </div>
       ))}
+
+      <button className='Button-delete' onClick={
+        () => {
+          deleteCars();
+        }
+      }>Delete files from DB</button>
     </>
   );
 };
