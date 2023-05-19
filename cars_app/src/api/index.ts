@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Car } from "../Types/Car";
 
-export const BASE_URL = "https://localhost:7030/";
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 //get cars
 export const getCars = async (pageIndex: number) => {

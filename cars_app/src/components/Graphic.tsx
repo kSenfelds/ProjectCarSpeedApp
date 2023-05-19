@@ -1,24 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import Chart from 'chart.js/auto'
-import { Car } from '../Types/Car';
 import { getGraphData } from '../api';
 
 
 export const Graphic = () => {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date("2020-08-01"));
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date("2020-08-08"));
   const [data, setData] = useState<Record<number, number>>({0:0});
 
   useEffect(() => {
     getGraphData(selectedDate).then((data) => {
       setData(data);
-      console.log(data);
     });
-
-
     createChart(data, selectedDate);
   }, [selectedDate]);
-
-  
 
   const createChart = (data: Record<number, number>, selectedDate: Date) => {
     
@@ -68,7 +62,7 @@ export const Graphic = () => {
             <h1>Chart</h1>
             <form onSubmit={ (e) => {
               e.preventDefault();
-              setSelectedDate(selectedDate);
+              
             }}>
             <input type="date" value={selectedDate.toISOString().substr(0, 10)} onChange={(e) => {
               e.preventDefault();
@@ -79,6 +73,5 @@ export const Graphic = () => {
             
             <canvas id="myCars" width="100" height="100"></canvas>
         </>
-    
   )
 }

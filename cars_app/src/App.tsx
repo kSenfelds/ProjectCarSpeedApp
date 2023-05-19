@@ -1,6 +1,5 @@
-import './App.css';
 import { Uploader } from './components/Uploader';
-import { deleteCars, getCars, getFilteredCars, putCars } from './api';
+import { deleteCars, getFilteredCars } from './api';
 import { CarList } from './components/CarList';
 import { Graphic } from './components/Graphic';
 import { useState, useEffect } from 'react';
@@ -40,8 +39,13 @@ function App() {
           }
         }></FilterForm>
         <CarList cars={cars}
-        handleNextPage={() => setPageIndex(pageIndex+1)}
-        handlePreviousPage={() => setPageIndex(pageIndex-1)}></CarList>
+        handleNextPage={() => {
+          if (cars.length < 20) return;
+          setPageIndex(pageIndex+1)
+        }}
+        handlePreviousPage={() => {
+          if (pageIndex == 1) return;
+          setPageIndex(pageIndex-1)}}></CarList>
         
         </>
         )

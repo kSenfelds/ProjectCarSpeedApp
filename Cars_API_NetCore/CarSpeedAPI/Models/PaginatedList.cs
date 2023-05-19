@@ -27,7 +27,7 @@ namespace CarSpeedAPI.Models
             var count =  source.Count();
             var items = await source.Skip(
                 (pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-
+            
             return new PaginatedList<T>(items, count, pageIndex);
         }
     }
