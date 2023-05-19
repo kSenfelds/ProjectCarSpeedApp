@@ -1,5 +1,4 @@
-﻿
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace CarSpeedAPI.Models
 {
@@ -23,12 +22,12 @@ namespace CarSpeedAPI.Models
 
         public bool HasNextPage => PageIndex < TotalPages;
 
-        public static async Task<PaginatedList<T>> CreateAsync(
-            IQueryable<T> source, int pageIndex)
+        public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int pageIndex)
         {
             var count =  source.Count();
             var items = await source.Skip(
                 (pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
+
             return new PaginatedList<T>(items, count, pageIndex);
         }
     }

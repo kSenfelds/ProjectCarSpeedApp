@@ -3,7 +3,6 @@ using CarSpeed.Core.Services;
 using CarSpeed.Data;
 using CarSpeedAPI.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace CarSpeedAPI.Controllers
 {
@@ -23,7 +22,8 @@ namespace CarSpeedAPI.Controllers
             if (pageIndex < 1)
                 return BadRequest("PageIndex must be greater than 0.");
 
-            var cars =  await PaginatedList<Car>.CreateAsync(_context.Cars, pageIndex);
+            var cars =  await PaginatedList<Car>.CreateAsync(_carService.GetQueryableCars(), pageIndex);
+
             return pageIndex > cars.TotalPages ? NotFound() : Ok(cars);
         }
 
@@ -33,11 +33,11 @@ namespace CarSpeedAPI.Controllers
         {
             if (pageIndex < 1)
                 return BadRequest("PageIndex must be greater than 0.");
-            var pages = await PaginatedList<Car>.CreateAsync(_context.Cars.Where(c => c.Speed >= minSpeed &&
-                c.TimeStamp>= from && c.TimeStamp<= to), pageIndex);
+
+            var pages = await PaginatedList<Car>.CreateAsync(_carService.GetQueryableCars().
+                Where(c => c.Speed >= minSpeed && c.TimeStamp>= from && c.TimeStamp<= to), pageIndex);
+
             return Ok(pages);
         }
-
-        
     }
 }

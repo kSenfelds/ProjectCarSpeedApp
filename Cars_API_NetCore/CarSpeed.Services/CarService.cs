@@ -19,7 +19,13 @@ namespace CarSpeed.Services
         {
             _context.Cars.AddRange(cars);
             _context.SaveChanges();
+
             return cars;
+        }
+
+        public IQueryable<Car> GetQueryableCars()
+        {
+            return _context.Cars;
         }
 
         public Dictionary<int, int> GetAverageSpeedsByHour(DateTime date)
@@ -27,14 +33,13 @@ namespace CarSpeed.Services
             var result = new Dictionary<int, int>();
             var cars = _context.Cars.Where(c => c.TimeStamp.Date == date.Date).ToArray();
 
-            var lengts = cars.Length;
-
             for (int i = 0; i < 24; i++)
             {
                 var carsByHour = cars.Where(c => c.TimeStamp.Hour == i).ToArray();
                 if (carsByHour.Any())
                     result.Add(i, (int)carsByHour.Average(c => c.Speed));
             }
+
             return result;
         }
 

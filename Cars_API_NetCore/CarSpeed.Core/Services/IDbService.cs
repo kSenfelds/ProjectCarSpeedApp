@@ -9,8 +9,6 @@ namespace CarSpeed.Core.Services
         public void Update<T>(T entity) where T : Entity;
         public void Delete<T>(T entity) where T : Entity;
         public List<T> GetAll<T>() where T : Entity;
-
         public void CreateMany<T>(List<T> entities) where T : Entity;
-
     }
 }

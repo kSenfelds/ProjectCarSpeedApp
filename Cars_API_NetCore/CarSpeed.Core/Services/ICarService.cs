@@ -8,5 +8,6 @@ namespace CarSpeed.Core.Services
         Car[] AddCars(Car[] cars);
         Dictionary<int, int> GetAverageSpeedsByHour(DateTime date);
         bool DeleteCars();
+        IQueryable<Car> GetQueryableCars();
     }
 }
