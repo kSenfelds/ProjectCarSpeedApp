@@ -30,9 +30,11 @@ namespace CarSpeedAPI
             var app = builder.Build();
 
             app.UseCors(options =>
-                options.WithOrigins("http://localhost:3000")
+                options.WithOrigins("http://localhost:3000", "https://project-car-speed-app.vercel.app")
                     .AllowAnyMethod()
                     .AllowAnyHeader());
+            
+            
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -40,6 +42,13 @@ namespace CarSpeedAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            if (app.Environment.IsProduction())
+            {
+                app.Urls.Add("https://*:7030");
+                System.Diagnostics.Process.Start("cmd", $"/c start https://project-car-speed-app.vercel.app/");
+            }
+
 
             app.UseHttpsRedirection();
 
