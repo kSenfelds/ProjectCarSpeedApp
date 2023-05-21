@@ -45,4 +45,18 @@ This application was developed by Kristaps Šēnfelds
 
 ## Screenshots
 
+<p align="center">
+  <b> Home Page </b><br>
+  <img src="./homePage.PNG" alt="Home page">
+</p>
+
+<p align="center">
+  <b> Cars Page </b><br>
+  <img src="./carsPage.PNG" alt="Cars page">
+</p>
+
+<p align="center">
+  <b> Home Page </b><br>
+  <img src="./graphsPage.PNG" alt="Graph page">
+</p>
 
