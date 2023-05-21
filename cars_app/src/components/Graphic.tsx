@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Chart from 'chart.js/auto'
 import { getGraphData } from '../api';
+import '../Styles/graphic.scss';
 
 
 export const Graphic = () => {
@@ -35,12 +36,17 @@ export const Graphic = () => {
               data: Object.values(data).toString().split(","),
               
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
+                  'rgba(255, 99, 132, 0.7)',
               ],
               borderColor: [
                   'rgba(255, 99, 132, 1)',
               ],
-              borderWidth: 1
+              borderWidth: 1,
+              borderRadius: 5,
+              barPercentage: 0.8,
+              categoryPercentage: 0.8,
+              
+              
           }]
           
       },
@@ -60,21 +66,17 @@ export const Graphic = () => {
   
   return (
     
-        <>
+        <div className='chart-container'>
             <h1>Chart</h1>
-            <form onSubmit={ (e) => {
-              e.preventDefault();
-              
-              
-            }}>
-            <input type="date" value={selectedDate.toISOString().substr(0, 10)} onChange={(e) => {
-              console.log(e.target.value);
-              setSelectedDate(new Date(e.target.value));
-            }}/>
-            
+            <form className = 'chart-form' onSubmit={ (e) => { e.preventDefault();}}>
+              <input type="date" value={selectedDate.toISOString().substr(0, 10)} onChange={(e) => {
+                console.log(e.target.value);
+                setSelectedDate(new Date(e.target.value));}}/>
             </form>
+            <div className='chart'>
+            <canvas id="myCars" width="100%" height="80%"></canvas>
+            </div>
             
-            <canvas id="myCars" width="100" height="100"></canvas>
-        </>
+        </div>
   )
 }

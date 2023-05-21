@@ -11,7 +11,7 @@ type CarListProps = {
 export const CarList = ({cars, handleNextPage, handlePreviousPage}: CarListProps) => {    
     
   return (
-    <div>
+    <div className='car-list-container'>
         <h1>Car List</h1>
         
         <table className='table'>
