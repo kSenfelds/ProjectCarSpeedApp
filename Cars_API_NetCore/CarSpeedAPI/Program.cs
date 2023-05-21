@@ -13,7 +13,8 @@ namespace CarSpeedAPI
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<CarsDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("CarsData")));
+                options.UseMySql(builder.Configuration.GetConnectionString("CarsData"), new MySqlServerVersion(new Version(6, 0, 0))));
+            
             builder.Services.AddTransient<ICarsDbContext, CarsDbContext>();
             builder.Services.AddScoped<IDbService, DbService>();
             builder.Services.AddScoped<IEntityService<Car>, EntityService<Car>>();

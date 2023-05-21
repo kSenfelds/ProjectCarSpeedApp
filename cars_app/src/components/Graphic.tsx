@@ -8,10 +8,12 @@ export const Graphic = () => {
   const [data, setData] = useState<Record<number, number>>({0:0});
 
   useEffect(() => {
+    console.log("current date", selectedDate);
     getGraphData(selectedDate).then((data) => {
       setData(data);
+      createChart(data, selectedDate);
     });
-    createChart(data, selectedDate);
+   
   }, [selectedDate]);
 
   const createChart = (data: Record<number, number>, selectedDate: Date) => {
@@ -63,9 +65,10 @@ export const Graphic = () => {
             <form onSubmit={ (e) => {
               e.preventDefault();
               
+              
             }}>
             <input type="date" value={selectedDate.toISOString().substr(0, 10)} onChange={(e) => {
-              e.preventDefault();
+              console.log(e.target.value);
               setSelectedDate(new Date(e.target.value));
             }}/>
             

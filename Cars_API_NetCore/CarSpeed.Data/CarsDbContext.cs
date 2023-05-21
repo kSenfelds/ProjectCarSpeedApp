@@ -11,5 +11,6 @@ namespace CarSpeedAPI
         }
 
         public DbSet<Car> Cars { get; set; }
+
     }
 }

@@ -36,7 +36,7 @@ namespace CarSpeed.Services
 
         public void CreateMany(List<T> entities)
         {
-            CreateMany(entities);
+            CreateMany<T>(entities);
         }
     }
 }

@@ -15,8 +15,7 @@ namespace CarSpeedAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get(DateTime date)
-        {
+        public IActionResult Get(DateTime date) { 
             var result = _carService.GetAverageSpeedsByHour(date);
             return Ok(result);
         }
