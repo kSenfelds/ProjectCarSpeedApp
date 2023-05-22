@@ -9,10 +9,10 @@ namespace CarSpeedAPI.Controllers
     [ApiController]
     public class DataApiController : BaseApiController
     {
-        private readonly ICarService _carService;
-        public DataApiController(ICarsDbContext context, ICarService carService) : base(context)
+        
+        public DataApiController(ICarService carService) : base(carService)
         {
-            _carService = carService;
+            
         }
 
         [HttpPut]

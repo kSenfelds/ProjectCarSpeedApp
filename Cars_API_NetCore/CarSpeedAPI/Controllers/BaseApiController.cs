@@ -1,15 +1,16 @@
-﻿using CarSpeed.Data;
+﻿using CarSpeed.Core.Services;
+using CarSpeed.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarSpeedAPI.Controllers
 {
     public abstract class BaseApiController : ControllerBase
     {
-        protected ICarsDbContext _context;
+        protected ICarService _carService;
 
-        public BaseApiController(ICarsDbContext context)
+        public BaseApiController(ICarService carService)
         {
-            _context = context;
+            _carService = carService;
         }
     }
 }

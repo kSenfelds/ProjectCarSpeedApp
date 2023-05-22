@@ -8,10 +8,9 @@ namespace CarSpeedAPI.Controllers
     [ApiController]
     public class GraphicController : BaseApiController
     {
-        private readonly ICarService _carService;
-        public GraphicController(ICarsDbContext context, ICarService carService):base (context)
+        
+        public GraphicController(ICarService carService):base (carService)
         {
-            _carService=carService;
         }
 
         [HttpGet]

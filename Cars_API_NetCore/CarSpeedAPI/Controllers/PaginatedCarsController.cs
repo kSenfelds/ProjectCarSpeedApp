@@ -10,10 +10,9 @@ namespace CarSpeedAPI.Controllers
     [ApiController]
     public class PaginatedCarsController : BaseApiController
     {
-        private readonly ICarService _carService;
-        public PaginatedCarsController(ICarsDbContext context, ICarService carService): base (context)
+        
+        public PaginatedCarsController(ICarService carService): base (carService)
         {
-            _carService = carService;
         }
 
         [HttpGet]
